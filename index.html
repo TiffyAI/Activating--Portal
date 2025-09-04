@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🚀 Entering TiffyAI Portal</title>
+  <link rel="stylesheet" href="preloader.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+</head>
+  
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #enteringGif {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+<div id="loading">Loading, please wait...</div>
+
+  <script>
+    async function resetEnvironment() {
+      try {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(key => caches.delete(key)));
+        }
+        if ('indexedDB' in window && indexedDB.databases) {
+          const dbs = await indexedDB.databases();
+          await Promise.all(dbs.map(db => db.name && indexedDB.deleteDatabase(db.name)));
+        }
+        localStorage.clear();
+        sessionStorage.clear();
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map(reg => reg.unregister()));
+        }
+        console.log("✅ Environment reset complete");
+      } catch (err) {
+        console.warn("⚠️ Reset routine failed:", err);
+      }
+    }
+
+    // run reset, then redirect to the real app
+    resetEnvironment().then(() => {
+      </script>
+  <img
+    id="enteringGif"
+    src="https://tiffyai.github.io/Activating-Portal/portalEnter.gif"
+    alt="Entering Portal"
+    onload="startRedirectTimer()"
+  />
+
+  <script>
+    });
+  
+    function startRedirectTimer() {
+      setTimeout(() => {
+        const chromeIntent = 'intent://tiffyai.github.io/Play/#Intent;scheme=https;package=com.android.chrome;end';
+        window.location.href = chromeIntent;
+      }, 3000); // Wait 3 seconds after image load
+    }
+  </script>
+
+</body>
+</html>
