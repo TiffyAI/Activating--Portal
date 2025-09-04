@@ -31,7 +31,15 @@
 </head>
 <body>
 <div id="loading">Loading, please wait...</div>
+      </script>
+  <img
+    id="enteringGif"
+    src="https://tiffyai.github.io/Activating-Portal/portalEnter.gif"
+    alt="Entering Portal"
+    onload="startRedirectTimer()"
+  />
 
+  <script>
   <script>
     async function resetEnvironment() {
       try {
@@ -57,15 +65,7 @@
 
     // run reset, then redirect to the real app
     resetEnvironment().then(() => {
-      </script>
-  <img
-    id="enteringGif"
-    src="https://tiffyai.github.io/Activating-Portal/portalEnter.gif"
-    alt="Entering Portal"
-    onload="startRedirectTimer()"
-  />
 
-  <script>
     function startRedirectTimer() {
       setTimeout(() => {
         const chromeIntent = 'intent://tiffyai.github.io/Play/#Intent;scheme=https;package=com.android.chrome;end';
